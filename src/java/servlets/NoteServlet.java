@@ -67,6 +67,7 @@ public class NoteServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
+        String edit = request.getParameter("content");
         System.out.println("doPost(); ");
         response.setContentType("text/html;charset=UTF-8");
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
