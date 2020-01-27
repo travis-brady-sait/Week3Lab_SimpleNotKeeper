@@ -48,20 +48,9 @@ public class NoteServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
+        System.out.println("doGet(); ");
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NoteServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NoteServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h2>[Get]<h2>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
         
     }
 
@@ -78,20 +67,9 @@ public class NoteServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
+        System.out.println("doPost(); ");
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NoteServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NoteServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h2>[Post]<h2>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
         
     }
 
