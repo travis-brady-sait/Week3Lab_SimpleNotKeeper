@@ -8,13 +8,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Simple Not keeper</title>
+        <title>Simple Note Keeper</title>
     </head>
     <body>
-        <h1>Simple note keeper</h1>
-        <h2>view note</h2>
-        <div>Title: </div>
-        <div> Content: <br></div>
-        <a href="note?edit">Edit</a>
+        <h1>Simple Note Keeper</h1>
+        <h2>View Note</h2>
+        
+        <p>Title: ${note.title}</p>
+        <p>Content: ${note.content}</p>
+        
+        
+        <a href="/Week03Lab_SimpleNoteKeeper/note?edit">Edit</a>
     </body>
 </html>

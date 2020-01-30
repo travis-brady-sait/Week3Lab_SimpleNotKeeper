@@ -8,19 +8,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Simple Note keeper</title>
+        <title>Simple Note Keeper</title>
     </head>
     <body>
-        <h1>Simple note keeper</h1>
-        <h2>edit note</h2>
-        
-        <div>
-            <form method="POST">
-                Title: <input type="text" name="title" /> <br>
-                Content: <textarea name="content"></textarea> <br>
-                <input type="submit" value="save" />
-            </form>
-        </div>
-        
+        <h1>Simple Note Keeper</h1>
+        <h2>Edit Note</h2>
+        <form method="POST" action="/Week03Lab_SimpleNoteKeeper/note">
+            Title: <input type="text" name="title" value="${note.title}" /><br />
+            Contents: <textarea name="contents" >${note.content}</textarea><br />
+            <input type="submit" value="Save" />
+        </form>
     </body>
 </html>
+
