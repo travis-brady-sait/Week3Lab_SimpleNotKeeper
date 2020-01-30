@@ -7,8 +7,10 @@ package servlets;
 
 import domain.Note;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author lpeters
+ * @author travis brady
  */
 public class NoteServlet extends HttpServlet {
 
@@ -58,6 +60,8 @@ public class NoteServlet extends HttpServlet {
         
         Note note = new Note(title, content);
         
+        br.close();
+        
         System.out.println(note.getTitle());
         System.out.println(note.getContent());
         
@@ -85,12 +89,30 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+        
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("POST Request:");
+        String edit = request.getParameter("edit");
         String title = request.getParameter("title");
-        String contents = request.getParameter("contents");
+        String content = request.getParameter("contents");
         System.out.println("Title: " + title);
-        System.out.println("Contents: " + contents);
+        System.out.println("Contents: " + content);
+        
+        if (edit != null) 
+            { 
+                System.out.println("Edit set"); 
+            }
+        
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
+        pw.println(title);
+        pw.println(content);
+        
+        Note note = new Note(title, content);
+        request.setAttribute("note", note);
+        pw.close();
+        
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request,response);
     }
 
